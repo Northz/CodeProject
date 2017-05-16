@@ -1,0 +1,3 @@
+C:\Users\danhu\Documents\Unreal Projects\CodeProject\Source\CodeProject\CodeProject.Build.cs
+C:\Users\danhu\Documents\Unreal Projects\CodeProject\Source\CodeProject.Target.cs
+C:\Users\danhu\Documents\Unreal Projects\CodeProject\Source\CodeProjectEditor.Target.cs
