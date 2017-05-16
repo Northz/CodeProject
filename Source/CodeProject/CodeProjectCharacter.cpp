@@ -9,14 +9,15 @@
 
 ACodeProjectCharacter::ACodeProjectCharacter()
 {
-	// Set size for collision capsule (42.f, 96.0f);
+	// Set size for collision capsule, UE4 default (42.f, 96.0f);
 	GetCapsuleComponent()->InitCapsuleSize(40.f, 96.0f);
 
-	// set our turn rates for input
+	// set our turn rates for controller input
 	BaseTurnRate = 45.f;
 	BaseLookUpRate = 45.f;
+	CameraDistance = 300.f;
 
-	// Don't rotate when the controller rotates. Let that just affect the camera.
+	// Don't rotate when the controller rotates, only affect the camera.
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationYaw = false;
 	bUseControllerRotationRoll = false;
@@ -30,7 +31,7 @@ ACodeProjectCharacter::ACodeProjectCharacter()
 	// Create a camera boom (pulls in towards the player if there is a collision)
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
-	CameraBoom->TargetArmLength = 300.0f; // The camera follows at this distance behind the character	
+	CameraBoom->TargetArmLength = CameraDistance; // The camera follows at this distance behind the character	
 	CameraBoom->bUsePawnControlRotation = true; // Rotate the arm based on the controller
 
 	// Create a follow camera
@@ -51,6 +52,10 @@ void ACodeProjectCharacter::SetupPlayerInputComponent(class UInputComponent* Pla
 	check(PlayerInputComponent);
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+
+	// Camera controls
+	PlayerInputComponent->BindAction( "ZoomIn", IE_Pressed, this, &ACodeProjectCharacter::ZoomIn );
+	PlayerInputComponent->BindAction( "ZoomOut", IE_Pressed, this, &ACodeProjectCharacter::ZoomOut );
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &ACodeProjectCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ACodeProjectCharacter::MoveRight);
@@ -75,6 +80,24 @@ void ACodeProjectCharacter::LookUpAtRate(float Rate)
 {
 	// calculate delta for this frame from the rate information
 	AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
+}
+
+void ACodeProjectCharacter::ZoomIn()
+{
+	if( CameraDistance >= 0.0f )
+	{
+		CameraDistance -= 100;
+		CameraBoom->TargetArmLength = CameraDistance;
+	}
+}
+
+void ACodeProjectCharacter::ZoomOut()
+{
+	if( CameraDistance < MaxCameraDistance )
+	{
+		CameraDistance += 100;
+		CameraBoom->TargetArmLength = CameraDistance;
+	}
 }
 
 void ACodeProjectCharacter::MoveForward(float Value)

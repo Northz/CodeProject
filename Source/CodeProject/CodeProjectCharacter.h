@@ -9,22 +9,26 @@ class ACodeProjectCharacter : public ACharacter
 	GENERATED_BODY()
 
 	/** Camera boom positioning the camera behind the character */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true") )
 	class USpringArmComponent* CameraBoom;
 
 	/** Follow camera */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true") )
 	class UCameraComponent* FollowCamera;
+
 public:
 	ACodeProjectCharacter();
 
 	/** Base turn rate, in deg/sec. Other scaling may affect final turn rate. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Camera )
 	float BaseTurnRate;
 
 	/** Base look up/down rate, in deg/sec. Other scaling may affect final rate. */
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Camera )
 	float BaseLookUpRate;
+
+	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Camera )
+	float CameraDistance;
 
 protected:
 
@@ -46,6 +50,11 @@ protected:
 	 */
 	void LookUpAtRate(float Rate);
 
+	/** Called via input to control camera zoom */
+	void ZoomIn();
+
+	void ZoomOut();
+
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -56,5 +65,8 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+private:
+	float MaxCameraDistance = 1000.0f;
 };
 
