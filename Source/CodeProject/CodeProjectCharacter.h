@@ -27,8 +27,13 @@ public:
 	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Camera )
 	float BaseLookUpRate;
 
+	/** The default camera distance */
 	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Camera )
 	float CameraDistance;
+
+	/** The max rate of which the camera can readjustment itself */
+	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Camera )
+	float CameraMaxAdjustRate;
 
 protected:
 
@@ -55,6 +60,11 @@ protected:
 
 	void ZoomOut();
 
+	void AutoAdjustCamera( float Value );
+
+	/** Called for yaw rotation input */
+	void RotateYaw( float Value );
+
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -67,6 +77,7 @@ public:
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
 private:
+	UPROPERTY()
 	float MaxCameraDistance = 1000.0f;
 };
 

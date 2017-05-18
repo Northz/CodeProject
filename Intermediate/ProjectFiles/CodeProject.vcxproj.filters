@@ -4,7 +4,7 @@
 	<ItemGroup>
 		<None Include="..\..\CodeProject.uproject" />
 		<Filter Include="Source">
-			<UniqueIdentifier>{07B6C533-DB56-4D13-8AE7-C0EA63489378}</UniqueIdentifier>
+			<UniqueIdentifier>{4E7F6B33-2F90-4187-A0C3-0C3F4EC29714}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Source\CodeProject.Target.cs">
 			<Filter>Source</Filter>
@@ -13,7 +13,7 @@
 			<Filter>Source</Filter>
 		</None >
 		<Filter Include="Config">
-			<UniqueIdentifier>{39FE865A-CD3F-4E1F-BB14-0FF5E14D2CFE}</UniqueIdentifier>
+			<UniqueIdentifier>{08053BD5-37B7-4719-BFA6-7DFE22F4D4DC}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Config\DefaultEditor.ini">
 			<Filter>Config</Filter>
@@ -31,7 +31,7 @@
 			<Filter>Config</Filter>
 		</None >
 		<Filter Include="Source\CodeProject">
-			<UniqueIdentifier>{8EB93C83-D540-4855-9238-FED35BF8568B}</UniqueIdentifier>
+			<UniqueIdentifier>{4F1721F5-ABBE-4FB2-83BD-8BCA325040EC}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Source\CodeProject\CodeProject.Build.cs">
 			<Filter>Source\CodeProject</Filter>

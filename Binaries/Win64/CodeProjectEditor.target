@@ -2,7 +2,7 @@
 	"TargetName" : "CodeProjectEditor",
 	"Platform" : "Win64",
 	"Configuration" : "Development",
-	"BuildId" : "285576d2-85f3-4e94-850c-a1a0087916e6",
+	"BuildId" : "9cf895f6-0226-4331-ad4c-56b694bf0d41",
 	"Version" : 
 	{
 		"MajorVersion" : 4,
@@ -17,15 +17,15 @@
 	"BuildProducts" :
 	[
 		{
-			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-CodeProject-2813.dll",
+			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-CodeProject-3506.dll",
 			"Type" : "DynamicLibrary"
 		},
 		{
-			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-CodeProject-2813.pdb",
+			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-CodeProject-3506.pdb",
 			"Type" : "SymbolFile"
 		},
 		{
-			"Path" : "$(ProjectDir)/Intermediate/Build/Win64/UE4Editor/Development/UE4Editor-CodeProject-2813.lib",
+			"Path" : "$(ProjectDir)/Intermediate/Build/Win64/UE4Editor/Development/UE4Editor-CodeProject-3506.lib",
 			"Type" : "ImportLibrary"
 		},
 		{

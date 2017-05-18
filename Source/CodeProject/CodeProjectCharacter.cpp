@@ -2,6 +2,7 @@
 
 #include "CodeProject.h"
 #include "Kismet/HeadMountedDisplayFunctionLibrary.h"
+#include "Kismet/KismetMathLibrary.h"
 #include "CodeProjectCharacter.h"
 
 //////////////////////////////////////////////////////////////////////////
@@ -12,10 +13,11 @@ ACodeProjectCharacter::ACodeProjectCharacter()
 	// Set size for collision capsule, UE4 default (42.f, 96.0f);
 	GetCapsuleComponent()->InitCapsuleSize(40.f, 96.0f);
 
-	// set our turn rates for controller input
+	// set default values
 	BaseTurnRate = 45.f;
 	BaseLookUpRate = 45.f;
 	CameraDistance = 300.f;
+	CameraMaxAdjustRate = 1.0f;
 
 	// Don't rotate when the controller rotates, only affect the camera.
 	bUseControllerRotationPitch = false;
@@ -59,6 +61,8 @@ void ACodeProjectCharacter::SetupPlayerInputComponent(class UInputComponent* Pla
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &ACodeProjectCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ACodeProjectCharacter::MoveRight);
+	PlayerInputComponent->BindAxis( "RotateYaw", this, &ACodeProjectCharacter::RotateYaw );
+
 
 	// We have 2 versions of the rotation bindings to handle different kinds of devices differently
 	// "turn" handles devices that provide an absolute delta, such as a mouse.
@@ -100,6 +104,43 @@ void ACodeProjectCharacter::ZoomOut()
 	}
 }
 
+void ACodeProjectCharacter::AutoAdjustCamera( float Value )
+{
+	// Get camera 360 yaw rotation
+	const FRotator CameraRotation = Controller->GetControlRotation();
+	const FRotator CameraYawRotation( 0, CameraRotation.Yaw, 0 );
+
+	// Get the forward and right vector relative to the current camera view
+	FVector ForwardVector = UKismetMathLibrary::GetForwardVector( CameraYawRotation );
+	FVector RightVector = UKismetMathLibrary::GetRightVector( CameraYawRotation );
+
+	// Get the MoveForward() axis value
+	float ForwardAxisValue = InputComponent->GetAxisValue( "MoveForward" );
+
+	// Multiply the respective vectors with an axis value
+	ForwardVector = UKismetMathLibrary::Multiply_VectorFloat( ForwardVector, ForwardAxisValue );
+	RightVector = UKismetMathLibrary::Multiply_VectorFloat( RightVector, Value );
+
+	// Use forward and Right vector to create a normalized directional rotator in world space
+	FVector DirectionalVector = UKismetMathLibrary::Add_VectorVector( ForwardVector, RightVector );
+	DirectionalVector = UKismetMathLibrary::Normal( DirectionalVector );
+	FRotator DirectionalRotator = UKismetMathLibrary::Conv_VectorToRotator( DirectionalVector );
+
+	// Get a vector that points the camera towards the characters forward vector
+	FRotator DeltaRotation = UKismetMathLibrary::NormalizedDeltaRotator( DirectionalRotator, CameraYawRotation );
+
+	// Magic
+	AddControllerYawInput( UKismetMathLibrary::FClamp( DeltaRotation.Yaw * GetWorld()->GetDeltaSeconds(), -CameraMaxAdjustRate, CameraMaxAdjustRate ) );
+}
+
+void ACodeProjectCharacter::RotateYaw( float Value )
+{
+	if( (Controller != NULL) && (Value != 0.0f) )
+	{
+		AddControllerYawInput( Value * BaseTurnRate * GetWorld()->GetDeltaSeconds() );
+	}
+}
+
 void ACodeProjectCharacter::MoveForward(float Value)
 {
 	if ((Controller != NULL) && (Value != 0.0f))
@@ -126,5 +167,6 @@ void ACodeProjectCharacter::MoveRight(float Value)
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 		// add movement in that direction
 		AddMovementInput(Direction, Value);
+		AutoAdjustCamera( Value );
 	}
 }

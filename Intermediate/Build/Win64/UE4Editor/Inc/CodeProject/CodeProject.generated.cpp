@@ -14,7 +14,7 @@ void EmptyLinkFunctionForGeneratedCode1CodeProject() {}
 	void ACodeProjectCharacter::StaticRegisterNativesACodeProjectCharacter()
 	{
 	}
-	IMPLEMENT_CLASS(ACodeProjectCharacter, 3212093856);
+	IMPLEMENT_CLASS(ACodeProjectCharacter, 694216058);
 	void ACodeProjectGameMode::StaticRegisterNativesACodeProjectGameMode()
 	{
 	}
@@ -50,6 +50,8 @@ void EmptyLinkFunctionForGeneratedCode1CodeProject() {}
 
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+				UProperty* NewProp_MaxCameraDistance = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("MaxCameraDistance"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(MaxCameraDistance, ACodeProjectCharacter), 0x0040000000000000);
+				UProperty* NewProp_CameraMaxAdjustRate = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CameraMaxAdjustRate"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(CameraMaxAdjustRate, ACodeProjectCharacter), 0x0010000000020015);
 				UProperty* NewProp_CameraDistance = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CameraDistance"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(CameraDistance, ACodeProjectCharacter), 0x0010000000020015);
 				UProperty* NewProp_BaseLookUpRate = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("BaseLookUpRate"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(BaseLookUpRate, ACodeProjectCharacter), 0x0010000000020015);
 				UProperty* NewProp_BaseTurnRate = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("BaseTurnRate"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(BaseTurnRate, ACodeProjectCharacter), 0x0010000000020015);
@@ -63,8 +65,13 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				MetaData->SetValue(OuterClass, TEXT("HideCategories"), TEXT("Navigation"));
 				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("CodeProjectCharacter.h"));
 				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("CodeProjectCharacter.h"));
+				MetaData->SetValue(NewProp_MaxCameraDistance, TEXT("ModuleRelativePath"), TEXT("CodeProjectCharacter.h"));
+				MetaData->SetValue(NewProp_CameraMaxAdjustRate, TEXT("Category"), TEXT("Camera"));
+				MetaData->SetValue(NewProp_CameraMaxAdjustRate, TEXT("ModuleRelativePath"), TEXT("CodeProjectCharacter.h"));
+				MetaData->SetValue(NewProp_CameraMaxAdjustRate, TEXT("ToolTip"), TEXT("The max rate of which the camera can readjustment itself"));
 				MetaData->SetValue(NewProp_CameraDistance, TEXT("Category"), TEXT("Camera"));
 				MetaData->SetValue(NewProp_CameraDistance, TEXT("ModuleRelativePath"), TEXT("CodeProjectCharacter.h"));
+				MetaData->SetValue(NewProp_CameraDistance, TEXT("ToolTip"), TEXT("The default camera distance"));
 				MetaData->SetValue(NewProp_BaseLookUpRate, TEXT("Category"), TEXT("Camera"));
 				MetaData->SetValue(NewProp_BaseLookUpRate, TEXT("ModuleRelativePath"), TEXT("CodeProjectCharacter.h"));
 				MetaData->SetValue(NewProp_BaseLookUpRate, TEXT("ToolTip"), TEXT("Base look up/down rate, in deg/sec. Other scaling may affect final rate."));
@@ -130,7 +137,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/CodeProject")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x435FF15E;
+			Guid.A = 0xC943908F;
 			Guid.B = 0x4B4AF6B2;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
