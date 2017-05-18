@@ -14,7 +14,7 @@ void EmptyLinkFunctionForGeneratedCode1CodeProject() {}
 	void ACodeProjectCharacter::StaticRegisterNativesACodeProjectCharacter()
 	{
 	}
-	IMPLEMENT_CLASS(ACodeProjectCharacter, 694216058);
+	IMPLEMENT_CLASS(ACodeProjectCharacter, 839400002);
 	void ACodeProjectGameMode::StaticRegisterNativesACodeProjectGameMode()
 	{
 	}
@@ -50,7 +50,16 @@ void EmptyLinkFunctionForGeneratedCode1CodeProject() {}
 
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-				UProperty* NewProp_MaxCameraDistance = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("MaxCameraDistance"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(MaxCameraDistance, ACodeProjectCharacter), 0x0040000000000000);
+				UProperty* NewProp_ManaRegen = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("ManaRegen"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(ManaRegen, ACodeProjectCharacter), 0x0020080000020015);
+				UProperty* NewProp_StaminaRegen = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("StaminaRegen"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(StaminaRegen, ACodeProjectCharacter), 0x0020080000020015);
+				UProperty* NewProp_HealthRegen = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("HealthRegen"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(HealthRegen, ACodeProjectCharacter), 0x0020080000020015);
+				UProperty* NewProp_MaxMana = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("MaxMana"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(MaxMana, ACodeProjectCharacter), 0x0020080000020015);
+				UProperty* NewProp_CurrentMana = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CurrentMana"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(CurrentMana, ACodeProjectCharacter), 0x0020080000020015);
+				UProperty* NewProp_MaxStamina = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("MaxStamina"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(MaxStamina, ACodeProjectCharacter), 0x0020080000020015);
+				UProperty* NewProp_CurrentStamina = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CurrentStamina"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(CurrentStamina, ACodeProjectCharacter), 0x0020080000020015);
+				UProperty* NewProp_MaxHealth = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("MaxHealth"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(MaxHealth, ACodeProjectCharacter), 0x0020080000020015);
+				UProperty* NewProp_CurrentHealth = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CurrentHealth"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(CurrentHealth, ACodeProjectCharacter), 0x0020080000020015);
+				UProperty* NewProp_MaxCameraDistance = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("MaxCameraDistance"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(MaxCameraDistance, ACodeProjectCharacter), 0x0020080000020001);
 				UProperty* NewProp_CameraMaxAdjustRate = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CameraMaxAdjustRate"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(CameraMaxAdjustRate, ACodeProjectCharacter), 0x0010000000020015);
 				UProperty* NewProp_CameraDistance = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CameraDistance"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(CameraDistance, ACodeProjectCharacter), 0x0010000000020015);
 				UProperty* NewProp_BaseLookUpRate = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("BaseLookUpRate"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(BaseLookUpRate, ACodeProjectCharacter), 0x0010000000020015);
@@ -65,6 +74,34 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				MetaData->SetValue(OuterClass, TEXT("HideCategories"), TEXT("Navigation"));
 				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("CodeProjectCharacter.h"));
 				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("CodeProjectCharacter.h"));
+				MetaData->SetValue(NewProp_ManaRegen, TEXT("Category"), TEXT("Attribute"));
+				MetaData->SetValue(NewProp_ManaRegen, TEXT("ModuleRelativePath"), TEXT("CodeProjectCharacter.h"));
+				MetaData->SetValue(NewProp_ManaRegen, TEXT("ToolTip"), TEXT("Mana regen of the character"));
+				MetaData->SetValue(NewProp_StaminaRegen, TEXT("Category"), TEXT("Attribute"));
+				MetaData->SetValue(NewProp_StaminaRegen, TEXT("ModuleRelativePath"), TEXT("CodeProjectCharacter.h"));
+				MetaData->SetValue(NewProp_StaminaRegen, TEXT("ToolTip"), TEXT("Stamina regen of the character"));
+				MetaData->SetValue(NewProp_HealthRegen, TEXT("Category"), TEXT("Attribute"));
+				MetaData->SetValue(NewProp_HealthRegen, TEXT("ModuleRelativePath"), TEXT("CodeProjectCharacter.h"));
+				MetaData->SetValue(NewProp_HealthRegen, TEXT("ToolTip"), TEXT("Health regen of the character"));
+				MetaData->SetValue(NewProp_MaxMana, TEXT("Category"), TEXT("Attribute"));
+				MetaData->SetValue(NewProp_MaxMana, TEXT("ModuleRelativePath"), TEXT("CodeProjectCharacter.h"));
+				MetaData->SetValue(NewProp_MaxMana, TEXT("ToolTip"), TEXT("Max mana of the character"));
+				MetaData->SetValue(NewProp_CurrentMana, TEXT("Category"), TEXT("Attribute"));
+				MetaData->SetValue(NewProp_CurrentMana, TEXT("ModuleRelativePath"), TEXT("CodeProjectCharacter.h"));
+				MetaData->SetValue(NewProp_CurrentMana, TEXT("ToolTip"), TEXT("Current mana of the character"));
+				MetaData->SetValue(NewProp_MaxStamina, TEXT("Category"), TEXT("Attribute"));
+				MetaData->SetValue(NewProp_MaxStamina, TEXT("ModuleRelativePath"), TEXT("CodeProjectCharacter.h"));
+				MetaData->SetValue(NewProp_MaxStamina, TEXT("ToolTip"), TEXT("Max stamina of the character"));
+				MetaData->SetValue(NewProp_CurrentStamina, TEXT("Category"), TEXT("Attribute"));
+				MetaData->SetValue(NewProp_CurrentStamina, TEXT("ModuleRelativePath"), TEXT("CodeProjectCharacter.h"));
+				MetaData->SetValue(NewProp_CurrentStamina, TEXT("ToolTip"), TEXT("Current stamina of the character"));
+				MetaData->SetValue(NewProp_MaxHealth, TEXT("Category"), TEXT("Attribute"));
+				MetaData->SetValue(NewProp_MaxHealth, TEXT("ModuleRelativePath"), TEXT("CodeProjectCharacter.h"));
+				MetaData->SetValue(NewProp_MaxHealth, TEXT("ToolTip"), TEXT("Max health of the character"));
+				MetaData->SetValue(NewProp_CurrentHealth, TEXT("Category"), TEXT("Attribute"));
+				MetaData->SetValue(NewProp_CurrentHealth, TEXT("ModuleRelativePath"), TEXT("CodeProjectCharacter.h"));
+				MetaData->SetValue(NewProp_CurrentHealth, TEXT("ToolTip"), TEXT("Current health of the character"));
+				MetaData->SetValue(NewProp_MaxCameraDistance, TEXT("Category"), TEXT("Camera"));
 				MetaData->SetValue(NewProp_MaxCameraDistance, TEXT("ModuleRelativePath"), TEXT("CodeProjectCharacter.h"));
 				MetaData->SetValue(NewProp_CameraMaxAdjustRate, TEXT("Category"), TEXT("Camera"));
 				MetaData->SetValue(NewProp_CameraMaxAdjustRate, TEXT("ModuleRelativePath"), TEXT("CodeProjectCharacter.h"));
@@ -137,7 +174,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/CodeProject")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0xC943908F;
+			Guid.A = 0xD6708FF9;
 			Guid.B = 0x4B4AF6B2;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;

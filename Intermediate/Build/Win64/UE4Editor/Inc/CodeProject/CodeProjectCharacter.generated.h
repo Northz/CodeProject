@@ -62,7 +62,16 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ACodeProjectCharacter); \
 #define CodeProject_Source_CodeProject_CodeProjectCharacter_h_9_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__CameraBoom() { return STRUCT_OFFSET(ACodeProjectCharacter, CameraBoom); } \
 	FORCEINLINE static uint32 __PPO__FollowCamera() { return STRUCT_OFFSET(ACodeProjectCharacter, FollowCamera); } \
-	FORCEINLINE static uint32 __PPO__MaxCameraDistance() { return STRUCT_OFFSET(ACodeProjectCharacter, MaxCameraDistance); }
+	FORCEINLINE static uint32 __PPO__MaxCameraDistance() { return STRUCT_OFFSET(ACodeProjectCharacter, MaxCameraDistance); } \
+	FORCEINLINE static uint32 __PPO__CurrentHealth() { return STRUCT_OFFSET(ACodeProjectCharacter, CurrentHealth); } \
+	FORCEINLINE static uint32 __PPO__MaxHealth() { return STRUCT_OFFSET(ACodeProjectCharacter, MaxHealth); } \
+	FORCEINLINE static uint32 __PPO__CurrentStamina() { return STRUCT_OFFSET(ACodeProjectCharacter, CurrentStamina); } \
+	FORCEINLINE static uint32 __PPO__MaxStamina() { return STRUCT_OFFSET(ACodeProjectCharacter, MaxStamina); } \
+	FORCEINLINE static uint32 __PPO__CurrentMana() { return STRUCT_OFFSET(ACodeProjectCharacter, CurrentMana); } \
+	FORCEINLINE static uint32 __PPO__MaxMana() { return STRUCT_OFFSET(ACodeProjectCharacter, MaxMana); } \
+	FORCEINLINE static uint32 __PPO__HealthRegen() { return STRUCT_OFFSET(ACodeProjectCharacter, HealthRegen); } \
+	FORCEINLINE static uint32 __PPO__StaminaRegen() { return STRUCT_OFFSET(ACodeProjectCharacter, StaminaRegen); } \
+	FORCEINLINE static uint32 __PPO__ManaRegen() { return STRUCT_OFFSET(ACodeProjectCharacter, ManaRegen); }
 
 
 #define CodeProject_Source_CodeProject_CodeProjectCharacter_h_6_PROLOG

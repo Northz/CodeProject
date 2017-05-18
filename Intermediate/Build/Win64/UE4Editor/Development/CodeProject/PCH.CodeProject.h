@@ -116,4 +116,7 @@
 #define MESHUTILITIES_API 
 #define KISMET_API DLLIMPORT
 #define NETWORKREPLAYSTREAMING_API 
+#define UMG_API DLLIMPORT
+#define MOVIESCENE_API DLLIMPORT
+#define MOVIESCENETRACKS_API DLLIMPORT
 #include "C:\Users\danhu\Documents\Unreal Projects\CodeProject\Source\CodeProject\CodeProject.h"

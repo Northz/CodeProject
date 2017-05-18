@@ -106,31 +106,35 @@ void ACodeProjectCharacter::ZoomOut()
 
 void ACodeProjectCharacter::AutoAdjustCamera( float Value )
 {
-	// Get camera 360 yaw rotation
-	const FRotator CameraRotation = Controller->GetControlRotation();
-	const FRotator CameraYawRotation( 0, CameraRotation.Yaw, 0 );
+	const float TurnAxisValue = InputComponent->GetAxisValue( "Turn" );
+	if( TurnAxisValue == 0)
+	{
+		// Get camera 360 yaw rotation
+		const FRotator CameraRotation = Controller->GetControlRotation();
+		const FRotator CameraYawRotation( 0, CameraRotation.Yaw, 0 );
 
-	// Get the forward and right vector relative to the current camera view
-	FVector ForwardVector = UKismetMathLibrary::GetForwardVector( CameraYawRotation );
-	FVector RightVector = UKismetMathLibrary::GetRightVector( CameraYawRotation );
+		// Get the forward and right vector relative to the current camera view
+		FVector ForwardVector = UKismetMathLibrary::GetForwardVector( CameraYawRotation );
+		FVector RightVector = UKismetMathLibrary::GetRightVector( CameraYawRotation );
 
-	// Get the MoveForward() axis value
-	float ForwardAxisValue = InputComponent->GetAxisValue( "MoveForward" );
+		// Get the MoveForward() axis value
+		const float ForwardAxisValue = InputComponent->GetAxisValue( "MoveForward" );
 
-	// Multiply the respective vectors with an axis value
-	ForwardVector = UKismetMathLibrary::Multiply_VectorFloat( ForwardVector, ForwardAxisValue );
-	RightVector = UKismetMathLibrary::Multiply_VectorFloat( RightVector, Value );
+		// Multiply the respective vectors with an axis value
+		ForwardVector = UKismetMathLibrary::Multiply_VectorFloat( ForwardVector, ForwardAxisValue );
+		RightVector = UKismetMathLibrary::Multiply_VectorFloat( RightVector, Value );
 
-	// Use forward and Right vector to create a normalized directional rotator in world space
-	FVector DirectionalVector = UKismetMathLibrary::Add_VectorVector( ForwardVector, RightVector );
-	DirectionalVector = UKismetMathLibrary::Normal( DirectionalVector );
-	FRotator DirectionalRotator = UKismetMathLibrary::Conv_VectorToRotator( DirectionalVector );
+		// Use forward and Right vector to create a normalized directional rotator in world space
+		FVector DirectionalVector = UKismetMathLibrary::Add_VectorVector( ForwardVector, RightVector );
+		DirectionalVector = UKismetMathLibrary::Normal( DirectionalVector );
+		FRotator DirectionalRotator = UKismetMathLibrary::Conv_VectorToRotator( DirectionalVector );
 
-	// Get a vector that points the camera towards the characters forward vector
-	FRotator DeltaRotation = UKismetMathLibrary::NormalizedDeltaRotator( DirectionalRotator, CameraYawRotation );
+		// Get a vector that points the camera towards the characters forward vector
+		FRotator DeltaRotation = UKismetMathLibrary::NormalizedDeltaRotator( DirectionalRotator, CameraYawRotation );
 
-	// Magic
-	AddControllerYawInput( UKismetMathLibrary::FClamp( DeltaRotation.Yaw * GetWorld()->GetDeltaSeconds(), -CameraMaxAdjustRate, CameraMaxAdjustRate ) );
+		// Magic
+		AddControllerYawInput( UKismetMathLibrary::FClamp( DeltaRotation.Yaw * GetWorld()->GetDeltaSeconds(), -CameraMaxAdjustRate, CameraMaxAdjustRate ) );
+	}
 }
 
 void ACodeProjectCharacter::RotateYaw( float Value )

@@ -55,11 +55,13 @@ protected:
 	 */
 	void LookUpAtRate(float Rate);
 
-	/** Called via input to control camera zoom */
+	/** Called via input to zoom in the camera*/
 	void ZoomIn();
 
+	/** Called via input to zoom out the camera*/
 	void ZoomOut();
 
+	/** Called via right and left input */
 	void AutoAdjustCamera( float Value );
 
 	/** Called for yaw rotation input */
@@ -76,8 +78,45 @@ public:
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
-private:
-	UPROPERTY()
+protected:
+	UPROPERTY( VisibleAnywhere, Category = Camera )
 	float MaxCameraDistance = 1000.0f;
+
+	/** Current health of the character */
+	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Attribute )
+	float CurrentHealth;
+
+	/** Max health of the character */
+	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Attribute )
+	float MaxHealth;
+
+	/** Current stamina of the character */
+	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Attribute )
+	float CurrentStamina;
+
+	/** Max stamina of the character */
+	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Attribute )
+	float MaxStamina;
+
+	/** Current mana of the character */
+	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Attribute )
+	float CurrentMana;
+
+	/** Max mana of the character */
+	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Attribute )
+	float MaxMana;
+
+	/** Health regen of the character */
+	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Attribute )
+	float HealthRegen;
+
+	/** Stamina regen of the character */
+	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Attribute )
+	float StaminaRegen;
+
+	/** Mana regen of the character */
+	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Attribute )
+	float ManaRegen;
+
 };
 
