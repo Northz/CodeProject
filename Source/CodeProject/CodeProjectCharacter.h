@@ -35,6 +35,9 @@ public:
 	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Camera )
 	float CameraMaxAdjustRate;
 
+	UFUNCTION()
+	void SetbCanAutoAdjust();
+
 protected:
 
 	/** Called for forwards/backward input */
@@ -42,6 +45,9 @@ protected:
 
 	/** Called for side to side input */
 	void MoveRight(float Value);
+
+	/** Called via input to change the camera yaw value */
+	void Turn( float Value );
 
 	/** 
 	 * Called via input to turn at a given rate. 
@@ -67,6 +73,9 @@ protected:
 	/** Called for yaw rotation input */
 	void RotateYaw( float Value );
 
+private:
+	FTimerHandle _TimerHandle;
+
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -79,7 +88,10 @@ public:
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
 protected:
-	UPROPERTY( VisibleAnywhere, Category = Camera )
+	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Camera )
+	bool bCanAutoAdjust;
+
+	UPROPERTY( EditAnywhere, BlueprintReadOnly, Category = Camera )
 	float MaxCameraDistance = 1000.0f;
 
 	/** Current health of the character */
@@ -117,6 +129,5 @@ protected:
 	/** Mana regen of the character */
 	UPROPERTY( VisibleAnywhere, BlueprintReadOnly, Category = Attribute )
 	float ManaRegen;
-
 };
 

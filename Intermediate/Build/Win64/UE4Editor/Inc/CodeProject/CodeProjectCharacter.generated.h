@@ -11,8 +11,28 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define CODEPROJECT_CodeProjectCharacter_generated_h
 
-#define CodeProject_Source_CodeProject_CodeProjectCharacter_h_9_RPC_WRAPPERS
-#define CodeProject_Source_CodeProject_CodeProjectCharacter_h_9_RPC_WRAPPERS_NO_PURE_DECLS
+#define CodeProject_Source_CodeProject_CodeProjectCharacter_h_9_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execSetbCanAutoAdjust) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->SetbCanAutoAdjust(); \
+		P_NATIVE_END; \
+	}
+
+
+#define CodeProject_Source_CodeProject_CodeProjectCharacter_h_9_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execSetbCanAutoAdjust) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->SetbCanAutoAdjust(); \
+		P_NATIVE_END; \
+	}
+
+
 #define CodeProject_Source_CodeProject_CodeProjectCharacter_h_9_INCLASS_NO_PURE_DECLS \
 	private: \
 	static void StaticRegisterNativesACodeProjectCharacter(); \
@@ -62,6 +82,7 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ACodeProjectCharacter); \
 #define CodeProject_Source_CodeProject_CodeProjectCharacter_h_9_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__CameraBoom() { return STRUCT_OFFSET(ACodeProjectCharacter, CameraBoom); } \
 	FORCEINLINE static uint32 __PPO__FollowCamera() { return STRUCT_OFFSET(ACodeProjectCharacter, FollowCamera); } \
+	FORCEINLINE static uint32 __PPO__bCanAutoAdjust() { return STRUCT_OFFSET(ACodeProjectCharacter, bCanAutoAdjust); } \
 	FORCEINLINE static uint32 __PPO__MaxCameraDistance() { return STRUCT_OFFSET(ACodeProjectCharacter, MaxCameraDistance); } \
 	FORCEINLINE static uint32 __PPO__CurrentHealth() { return STRUCT_OFFSET(ACodeProjectCharacter, CurrentHealth); } \
 	FORCEINLINE static uint32 __PPO__MaxHealth() { return STRUCT_OFFSET(ACodeProjectCharacter, MaxHealth); } \

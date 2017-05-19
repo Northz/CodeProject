@@ -18,6 +18,7 @@ ACodeProjectCharacter::ACodeProjectCharacter()
 	BaseLookUpRate = 45.f;
 	CameraDistance = 300.f;
 	CameraMaxAdjustRate = 1.0f;
+	bCanAutoAdjust = true;
 
 	// Don't rotate when the controller rotates, only affect the camera.
 	bUseControllerRotationPitch = false;
@@ -67,7 +68,7 @@ void ACodeProjectCharacter::SetupPlayerInputComponent(class UInputComponent* Pla
 	// We have 2 versions of the rotation bindings to handle different kinds of devices differently
 	// "turn" handles devices that provide an absolute delta, such as a mouse.
 	// "turnrate" is for devices that we choose to treat as a rate of change, such as an analog joystick
-	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
+	PlayerInputComponent->BindAxis("Turn", this, &ACodeProjectCharacter::Turn);
 	PlayerInputComponent->BindAxis("TurnRate", this, &ACodeProjectCharacter::TurnAtRate);
 	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
 	PlayerInputComponent->BindAxis("LookUpRate", this, &ACodeProjectCharacter::LookUpAtRate);
@@ -106,8 +107,7 @@ void ACodeProjectCharacter::ZoomOut()
 
 void ACodeProjectCharacter::AutoAdjustCamera( float Value )
 {
-	const float TurnAxisValue = InputComponent->GetAxisValue( "Turn" );
-	if( TurnAxisValue == 0)
+	if( bCanAutoAdjust )
 	{
 		// Get camera 360 yaw rotation
 		const FRotator CameraRotation = Controller->GetControlRotation();
@@ -145,6 +145,11 @@ void ACodeProjectCharacter::RotateYaw( float Value )
 	}
 }
 
+void ACodeProjectCharacter::SetbCanAutoAdjust()
+{
+	bCanAutoAdjust = true;
+}
+
 void ACodeProjectCharacter::MoveForward(float Value)
 {
 	if ((Controller != NULL) && (Value != 0.0f))
@@ -172,5 +177,15 @@ void ACodeProjectCharacter::MoveRight(float Value)
 		// add movement in that direction
 		AddMovementInput(Direction, Value);
 		AutoAdjustCamera( Value );
+	}
+}
+
+void ACodeProjectCharacter::Turn( float Value )
+{
+	if( Value != 0 )
+	{
+		bCanAutoAdjust = false;
+		GetWorld()->GetTimerManager().SetTimer( _TimerHandle, this, &ACodeProjectCharacter::SetbCanAutoAdjust, 0.1f, false );
+		AddControllerYawInput( Value );
 	}
 }

@@ -13,8 +13,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCode1CodeProject() {}
 	void ACodeProjectCharacter::StaticRegisterNativesACodeProjectCharacter()
 	{
+		FNativeFunctionRegistrar::RegisterFunction(ACodeProjectCharacter::StaticClass(), "SetbCanAutoAdjust",(Native)&ACodeProjectCharacter::execSetbCanAutoAdjust);
 	}
-	IMPLEMENT_CLASS(ACodeProjectCharacter, 839400002);
+	IMPLEMENT_CLASS(ACodeProjectCharacter, 253174577);
 	void ACodeProjectGameMode::StaticRegisterNativesACodeProjectGameMode()
 	{
 	}
@@ -26,11 +27,28 @@ void EmptyLinkFunctionForGeneratedCode1CodeProject() {}
 	ENGINE_API class UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 	ENGINE_API class UClass* Z_Construct_UClass_AGameModeBase();
 
+	CODEPROJECT_API class UFunction* Z_Construct_UFunction_ACodeProjectCharacter_SetbCanAutoAdjust();
 	CODEPROJECT_API class UClass* Z_Construct_UClass_ACodeProjectCharacter_NoRegister();
 	CODEPROJECT_API class UClass* Z_Construct_UClass_ACodeProjectCharacter();
 	CODEPROJECT_API class UClass* Z_Construct_UClass_ACodeProjectGameMode_NoRegister();
 	CODEPROJECT_API class UClass* Z_Construct_UClass_ACodeProjectGameMode();
 	CODEPROJECT_API class UPackage* Z_Construct_UPackage__Script_CodeProject();
+	UFunction* Z_Construct_UFunction_ACodeProjectCharacter_SetbCanAutoAdjust()
+	{
+		UObject* Outer=Z_Construct_UClass_ACodeProjectCharacter();
+		static UFunction* ReturnFunction = NULL;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("SetbCanAutoAdjust"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), NULL, 0x00020401, 65535);
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("CodeProjectCharacter.h"));
+#endif
+		}
+		return ReturnFunction;
+	}
 	UClass* Z_Construct_UClass_ACodeProjectCharacter_NoRegister()
 	{
 		return ACodeProjectCharacter::StaticClass();
@@ -48,6 +66,7 @@ void EmptyLinkFunctionForGeneratedCode1CodeProject() {}
 				UObjectForceRegistration(OuterClass);
 				OuterClass->ClassFlags |= 0x20800080;
 
+				OuterClass->LinkChild(Z_Construct_UFunction_ACodeProjectCharacter_SetbCanAutoAdjust());
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 				UProperty* NewProp_ManaRegen = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("ManaRegen"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(ManaRegen, ACodeProjectCharacter), 0x0020080000020015);
@@ -59,7 +78,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 				UProperty* NewProp_CurrentStamina = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CurrentStamina"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(CurrentStamina, ACodeProjectCharacter), 0x0020080000020015);
 				UProperty* NewProp_MaxHealth = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("MaxHealth"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(MaxHealth, ACodeProjectCharacter), 0x0020080000020015);
 				UProperty* NewProp_CurrentHealth = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CurrentHealth"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(CurrentHealth, ACodeProjectCharacter), 0x0020080000020015);
-				UProperty* NewProp_MaxCameraDistance = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("MaxCameraDistance"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(MaxCameraDistance, ACodeProjectCharacter), 0x0020080000020001);
+				UProperty* NewProp_MaxCameraDistance = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("MaxCameraDistance"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(MaxCameraDistance, ACodeProjectCharacter), 0x0020080000000015);
+				CPP_BOOL_PROPERTY_BITMASK_STRUCT(bCanAutoAdjust, ACodeProjectCharacter, bool);
+				UProperty* NewProp_bCanAutoAdjust = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("bCanAutoAdjust"), RF_Public|RF_Transient|RF_MarkAsNative) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(bCanAutoAdjust, ACodeProjectCharacter), 0x0020080000020015, CPP_BOOL_PROPERTY_BITMASK(bCanAutoAdjust, ACodeProjectCharacter), sizeof(bool), true);
 				UProperty* NewProp_CameraMaxAdjustRate = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CameraMaxAdjustRate"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(CameraMaxAdjustRate, ACodeProjectCharacter), 0x0010000000020015);
 				UProperty* NewProp_CameraDistance = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CameraDistance"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(CameraDistance, ACodeProjectCharacter), 0x0010000000020015);
 				UProperty* NewProp_BaseLookUpRate = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("BaseLookUpRate"), RF_Public|RF_Transient|RF_MarkAsNative) UFloatProperty(CPP_PROPERTY_BASE(BaseLookUpRate, ACodeProjectCharacter), 0x0010000000020015);
@@ -67,6 +88,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 				UProperty* NewProp_FollowCamera = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("FollowCamera"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(FollowCamera, ACodeProjectCharacter), 0x00400000000a001d, Z_Construct_UClass_UCameraComponent_NoRegister());
 				UProperty* NewProp_CameraBoom = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("CameraBoom"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(CameraBoom, ACodeProjectCharacter), 0x00400000000a001d, Z_Construct_UClass_USpringArmComponent_NoRegister());
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_ACodeProjectCharacter_SetbCanAutoAdjust(), "SetbCanAutoAdjust"); // 3048145200
 				OuterClass->ClassConfigName = FName(TEXT("Game"));
 				OuterClass->StaticLink();
 #if WITH_METADATA
@@ -103,6 +125,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 				MetaData->SetValue(NewProp_CurrentHealth, TEXT("ToolTip"), TEXT("Current health of the character"));
 				MetaData->SetValue(NewProp_MaxCameraDistance, TEXT("Category"), TEXT("Camera"));
 				MetaData->SetValue(NewProp_MaxCameraDistance, TEXT("ModuleRelativePath"), TEXT("CodeProjectCharacter.h"));
+				MetaData->SetValue(NewProp_bCanAutoAdjust, TEXT("Category"), TEXT("Camera"));
+				MetaData->SetValue(NewProp_bCanAutoAdjust, TEXT("ModuleRelativePath"), TEXT("CodeProjectCharacter.h"));
 				MetaData->SetValue(NewProp_CameraMaxAdjustRate, TEXT("Category"), TEXT("Camera"));
 				MetaData->SetValue(NewProp_CameraMaxAdjustRate, TEXT("ModuleRelativePath"), TEXT("CodeProjectCharacter.h"));
 				MetaData->SetValue(NewProp_CameraMaxAdjustRate, TEXT("ToolTip"), TEXT("The max rate of which the camera can readjustment itself"));
@@ -174,8 +198,8 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), NULL, FName(TEXT("/Script/CodeProject")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0xD6708FF9;
-			Guid.B = 0x4B4AF6B2;
+			Guid.A = 0x36D8B455;
+			Guid.B = 0x9CCB6698;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;
 			ReturnPackage->SetGuid(Guid);
